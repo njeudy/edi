@@ -5,7 +5,7 @@ from odoo import models, fields
 
 
 class AccountConfigSettings(models.TransientModel):
-    _inherit = 'account.config.settings'
+    _inherit = 'res.config.settings'
 
     adjustment_credit_account_id = fields.Many2one(
         related='company_id.adjustment_credit_account_id')
