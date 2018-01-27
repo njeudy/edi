@@ -14,7 +14,7 @@
         'base_iban',
         'base_business_document_import',
         'onchange_helper',
-        ],
+    ],
     'data': [
         'security/ir.model.access.csv',
         'security/rule.xml',
