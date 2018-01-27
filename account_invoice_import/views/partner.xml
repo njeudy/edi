@@ -13,7 +13,7 @@
     <field name="model">res.partner</field>
     <field name="inherit_id" ref="account.view_partner_property_form"/>
     <field name="arch" type="xml">
-        <field name="debit" position="after">
+        <field name="currency_id" position="after">
             <field name="invoice_import_id"
                 attrs="{'invisible': ['|', ('supplier', '=', False), ('parent_id', '!=', False)]}"
                 context="{'default_name': name}"/>
