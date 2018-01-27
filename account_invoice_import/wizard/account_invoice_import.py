@@ -54,7 +54,7 @@ class AccountInvoiceImport(models.TransientModel):
         modules'''
         bdio = self.env['business.document.import']
         xml_files_dict = bdio.get_xml_files_from_pdf(file_data)
-        for xml_filename, xml_root in xml_files_dict.iteritems():
+        for xml_filename, xml_root in xml_files_dict.items():
             logger.info('Trying to parse XML file %s', xml_filename)
             parsed_inv = self.parse_xml_invoice(xml_root)
             if parsed_inv:
@@ -317,7 +317,7 @@ class AccountInvoiceImport(models.TransientModel):
         if filetype and filetype[0] in ['application/xml', 'text/xml']:
             try:
                 xml_root = etree.fromstring(file_data)
-            except Exception, e:
+            except Exception as e:
                 raise UserError(_(
                     "This XML file is not XML-compliant. Error: %s") % e)
             pretty_xml_string = etree.tostring(
@@ -623,7 +623,7 @@ class AccountInvoiceImport(models.TransientModel):
                 })
         compare_res = self.env['business.document.import'].compare_lines(
             existing_lines, parsed_inv['lines'], chatter, seller=seller)
-        for eline, cdict in compare_res['to_update'].iteritems():
+        for eline, cdict in compare_res['to_update'].items():
             write_vals = {}
             if cdict.get('qty'):
                 chatter.append(_(
@@ -772,7 +772,7 @@ class AccountInvoiceImport(models.TransientModel):
         return action
 
     def xpath_to_dict_helper(self, xml_root, xpath_dict, namespaces):
-        for key, value in xpath_dict.iteritems():
+        for key, value in xpath_dict.items():
             if isinstance(value, list):
                 isdate = isfloat = False
                 if 'date' in key:
